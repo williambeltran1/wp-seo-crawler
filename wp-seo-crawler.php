@@ -3,7 +3,8 @@
  * Plugin Name: WP SEO Crawler
  * Description: Crawl homepage and list internal links.
  * Version: 1.0
- * Author: Your Name
+ * Author: William Beltran
+ * Text Domain: wp_rocket
  */
 
 /*Constants*/

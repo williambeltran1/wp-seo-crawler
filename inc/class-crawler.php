@@ -8,11 +8,19 @@ class WP_ROCKET_SEO_Crawler {
 	 * @return void
 	 */
 	public static function crawl_homepage() {
+		global $wp_filesystem;
+
+		if ( empty( $wp_filesystem ) ) {
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
 		$homepage_content = wp_remote_get( home_url() );
 
 		// Save the home page content to an HTML file.
 		$file_path = ABSPATH . '/home_page_snapshot.html';
-		file_put_contents( $file_path, $homepage_content['body'] );
+
+		$wp_filesystem->put_contents( $file_path, $homepage_content['body'] );
 
 		preg_match_all( '/<a[^>]+href="([^">]+)"[^>]*>/i', $homepage_content['body'], $matches );
 

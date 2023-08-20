@@ -23,10 +23,11 @@ class WP_ROCKET_SEO_Crawler_Database {
 		dbDelta( $sql );
 	}
 
+	//@codingStandardsIgnoreStart
 	/**
-	 * Insert url entry to database
+	 * Insert $url entry to database
 	 *
-	 * @param $url
+	 * @param $url string Crawled Link to insert
 	 * @return void
 	 */
 	public static function insert_link( $url ) {
@@ -56,4 +57,6 @@ class WP_ROCKET_SEO_Crawler_Database {
 		$table_name = $wpdb->prefix . 'seo_crawler';
 		$wpdb->query( "DELETE FROM $table_name" );
 	}
+
+	//@codingStandardsIgnoreEnd
 }
